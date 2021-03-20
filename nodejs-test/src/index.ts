@@ -1,7 +1,6 @@
-const express = require('express');
-const process = require('process')
+import express from 'express';
+import cors from 'cors'
 const app = express();
-const cors = require('cors');
  
 const http = require('http').Server(app)
  
@@ -13,11 +12,11 @@ const io = require('socket.io')(http,{
       }
 });
 
-var all_clients = []
-var peers = []
+var all_clients:Array<any> = []
+var peers:Array<any> = []
 app.use(cors())
 
-io.on("connection",(socket)=>{
+io.on("connection",(socket:any)=>{
     
     console.log("connected!!!")
      all_clients.push(socket.id)
@@ -41,9 +40,9 @@ io.on("connection",(socket)=>{
       
     })
 
-    socket.on('peer', peer=>{
+    socket.on('peer', (peer:any) =>{
     
-         peers.push({id: peer.id, socket_id: socket.id})
+         peers.push({id: peer?.id, socket_id: socket.id})
 
         //  console.log(all_clients)
         //  for (var data of all_clients)
