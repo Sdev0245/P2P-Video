@@ -37,6 +37,7 @@ io.on("connection",(socket:any)=>{
             }
         })
         peers = arr;
+        io.local.emit('peers',{peers: peers})
       
     })
 

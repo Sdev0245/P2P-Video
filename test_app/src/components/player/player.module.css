@@ -1,0 +1,35 @@
+
+
+ul
+{
+    text-decoration: none;
+    list-style: none;
+
+}
+
+.panel {
+    display: inline-block;
+    height: 100vh;
+    vertical-align: middle;
+    width: 93vw;
+    margin-left: 50px;
+    border: 2px solid rgb(112, 76, 76) ;
+    box-shadow: 4px 4px 4px 4p rgb(80, 72, 72);
+    background-color: rgb(46, 43, 43);
+    border-radius: 14px;
+}
+
+.connections_panel {
+
+    background-color: rgb(68, 64, 64);
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+
+ul 
+{
+    text-decoration: none;
+    list-style: none;
+   
+}

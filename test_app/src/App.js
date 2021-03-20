@@ -1,15 +1,15 @@
 import logo from './logo.svg';
 import {BrowserRouter} from 'react-router-dom'
 import Player from './components/player/player'
-import './App.css';
+import {classes} from './App.module.css'
 
 function App() {
   return (
 
     <BrowserRouter>
-      <div className="App">
-        <Player/>
-      </div>
+        <div>
+          <Player/>
+        </div>
     </BrowserRouter>
   );
 }

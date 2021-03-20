@@ -1,0 +1,23 @@
+
+li 
+{
+    display: inline-block;
+    font-size: 40px;
+
+    
+}
+
+a{
+    display: inline-block;
+    
+    color: red;
+}
+.SingleUser {
+
+    cursor: pointer;
+    padding: 30px;
+    border: 5px solid grey;
+    width: 30%;
+    border-radius: 15px;
+    margin-top:30px;
+}

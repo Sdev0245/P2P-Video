@@ -1,13 +1,17 @@
-import react, {useEffect, useRef, useState} from 'react';
+import react, {Fragment, useEffect, useRef, useState} from 'react';
 import socketIOClient from 'socket.io-client'
+import Calling from '../calling/calling';
+import classes from './player.module.css'
 import Peer from 'peerjs';
-const my_peer_id =  'connection' + String(Math.floor(Math.random()*10))
-console.log(my_peer_id)
+import Connection from '../connection/connection';
+const my_peer_id =  'connection' + String(Math.floor(Math.random()*100))
 const peer = new Peer(my_peer_id)
 
 const socket  = socketIOClient('http://127.0.0.1:8000') 
 const Player = (props)=>{
     const ref_obj = useRef(null)
+    console.log(classes.connections)
+    const [calling, setCallingState] =  useState(false)
     
     var [peers, setPeers] = useState([])
     useEffect(()=>{
@@ -23,7 +27,7 @@ const Player = (props)=>{
     useEffect(()=>{
         
         peer.on('call',(call)=>{
-            
+          setCallingState(true)
           navigator.mediaDevices.getUserMedia({video:true}).then(stream=>{
               call.answer(stream)
           })
@@ -73,29 +77,44 @@ const Player = (props)=>{
     })
   }
 
+  const isCalling = ()=>{
+
+        if(calling)
+        {
+            return (
+                <Calling/>
+            )
+        }
+
+  }
+
     return (
-        <div>
-         {
-             peers.map(ele=>{
-                 return (
-                     <div key={ele.id}>
-                        <a  onClick={()=>startCalling(ele.id)}>
-                            {ele.id}
-                        </a>
+        <Fragment>
+            <div className={classes.panel}>
+            { <div className={classes.connections}>
+                {
+                    <div>
+                        <ul>    
+                        { 
+                            peers.map(ele=>{
+                            return (
+                                <Connection element = {ele}>
+                                    {/* <video autoPlay width="320" height="240" ref={ref_obj} id="temp">
+                                    </video> */}
+                                </Connection>
+                            )
+                        })
+                        }
+                         </ul>
+                    </div>
+                }
+            </div>   
+    
+            }
+            </div>
 
-                        <div>
-                        <video autoPlay width="320" height="240" ref={ref_obj} id="temp">
-	
-	                    </video>
-                        </div>
-
-                     </div>
- 
-                 )
-             })
-         }
-        </div>
-
+          
+        </Fragment>
     )
 }
 
