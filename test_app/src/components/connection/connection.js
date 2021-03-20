@@ -3,7 +3,7 @@ import classes from './connection.module.css';
 const Connection = (props)=>{
 
     return (
-        <div className={classes.SingleUser} key={props.element.id}>
+        <div className={classes.SingleUser} key={props.element.id} onClick={props.click}>
              
                 <li >
                     <a>

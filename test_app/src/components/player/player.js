@@ -98,7 +98,7 @@ const Player = (props)=>{
                         { 
                             peers.map(ele=>{
                             return (
-                                <Connection element = {ele}>
+                                <Connection element = {ele} click={startCalling.bind(ele.id)} >
                                     {/* <video autoPlay width="320" height="240" ref={ref_obj} id="temp">
                                     </video> */}
                                 </Connection>
